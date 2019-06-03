@@ -1,12 +1,14 @@
+@import "../../stylesheet.scss";
+
 .navbar {
   position: fixed;
-  background-image: url("../../images//77245803.nTlLEdyo.demon_6206_web.jpg");
+  background-color: $primary-color;
   height: 10vh;
   width: 100vw;
   display: flex;
   justify-content: space-between;
   align-content: center;
-  box-shadow: 0px 2px rgba(90, 9, 9, 0.5);
+  box-shadow: 0px 2px $brand-color;
   z-index: 200;
 }
 
@@ -25,9 +27,9 @@
   }
 }
 
-.navHide {
-  display: none;
-}
+// .navHide {
+//   display: none;
+// }
 
 .links {
   width: 40%;
@@ -60,10 +62,9 @@
 }
 
 .navLinks {
-  position: absolute;
+  position: fixed;
   top: 10vh;
-  border: 2px solid rgba(90, 9, 9, 0.5);
-  background-image: url("../../images/77245803.nTlLEdyo.demon_6206_web.jpg");
+  background-color: black;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -72,12 +73,15 @@
   color: white;
   font-family: "Righteous", cursive;
   font-size: 15pt;
+  transform: translateY(-100vh);
+  transition-duration: 0.8s;
+  z-index: 10;
   ul {
     height: 100%;
     li {
       height: 16.7%;
       width: 100%;
-      border: 2px solid rgb(255, 255, 255);
+      border: 2px solid $brand-color;
       text-align: center;
       display: flex;
       justify-content: center;
@@ -104,3 +108,9 @@
     }
   }
 }
+
+.navShow{
+transform: translateY(0vh);
+}
+
+

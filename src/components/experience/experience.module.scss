@@ -1,0 +1,81 @@
+@import "../../stylesheet.scss";
+
+.title {
+    font-size: 24pt;
+  }
+
+  $card-width: 265px;
+  $card-height: $card-width * 3.5 / 2.5;
+  $picture-width: 100px;
+  $picture-height: $picture-width * 3.5 / 2.5;
+  
+  .scene {
+    width: $card-width;
+    min-width: $card-width;
+    height: $card-height;
+    perspective: 600px;
+    margin: 10px;
+  }
+
+  .card{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+
+%card {
+  border: 8px solid $primary-color;
+  background-size: cover;
+  border-radius: 15px;
+  background-repeat: no-repeat, repeat;
+  position: absolute;
+  height: calc(100% - 16px);
+  width: calc(100% - 16px);
+  backface-visibility: hidden;
+}
+
+.cardFront {
+  @extend %card;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-image: url("../../images/bluebackground.jpg");
+  span{
+    text-align: center;
+    font-size: 40pt;
+  }
+  p{
+    font-size: 30pt;
+  }
+  .smallWriting{
+    font-size: 20pt;
+  }
+  .moreInfo{
+    width: 44vw;
+    font-size: 18pt;
+    margin: 2px;
+    text-align: center;
+  }
+}
+
+.cardBack {
+  @extend %card;
+  transform: rotateY(180deg);
+  background-color: #c7c7c7;
+  div{
+    height: 40vh;
+    overflow: scroll;
+  }
+  p{
+    display: initial;
+    font-size: 18pt;
+  }
+}
+
+.cardRotated {
+  transform: rotateY(180deg);
+}
+
+

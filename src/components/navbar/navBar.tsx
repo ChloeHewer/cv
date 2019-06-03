@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./navbar.module.scss";
 import { NavLink } from "react-router-dom";
 
-export interface IProps {}
+export interface IProps { }
 
 export interface IState {
   isNavHidden: boolean;
@@ -11,9 +11,9 @@ export interface IState {
 class NavBar extends React.Component<IProps, IState> {
   public state = { isNavHidden: true };
   render() {
-    const navLinkHide = this.state.isNavHidden ? styles.navHide : null;
+    const navLinkHide = this.state.isNavHidden ? styles.navHide : styles.navShow;
     return (
-      <header>
+      <React.Fragment>
         <section className={styles.navbar}>
           <span
             className={styles.nav}
@@ -41,27 +41,20 @@ class NavBar extends React.Component<IProps, IState> {
           </div>
         </section>
         <section className={`${styles.navLinks} ${navLinkHide}`}>
-          <ul
-            onClick={() =>
-              this.setState({ isNavHidden: !this.state.isNavHidden })
-            }
-          >
-            <NavLink to={"/"}>
-              <li>Home</li>
-            </NavLink>
-            <NavLink to={"summary"}>
-              <li>Personal Summary</li>
-            </NavLink>
-            <li>Skills</li>
-            <NavLink to={"experience"}>
-              <li>Experience</li>
-            </NavLink>
-            <li>Education</li>
+          <ul onClick={this.handleNavClick}>
+            <NavLink to="/"><li>Home</li></NavLink>
+            <NavLink to="/summary"><li>Personal Summary</li></NavLink>
+            <NavLink to="/skills"><li>Skills</li></NavLink>
+            <NavLink to="/experience"><li>Experience</li></NavLink>
+            <NavLink to="/education"><li>Education</li></NavLink>
             <li>Additional Information</li>
           </ul>
         </section>
-      </header>
+      </React.Fragment>
     );
+  }
+  private handleNavClick = () => {
+    this.setState({ isNavHidden: !this.state.isNavHidden })
   }
 }
 
